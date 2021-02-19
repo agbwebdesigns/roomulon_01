@@ -1,0 +1,212 @@
+
+.cont  {
+	background: white;
+	color: white;
+	font-size: 1em;
+}
+
+.row1  {
+	background: black;
+}
+
+.roomtext  {
+	height: 100%;
+}
+
+#textwindow  {
+	background: lightgray;
+	color: black;
+	width: 450px;
+	height: 275px;
+	overflow-y: auto;
+	//margin: 0;
+}
+
+#textwindow p  {
+	//background: green;
+	margin: 0em;
+	//padding: 0;
+}
+
+#d-pad  {
+	background: blue;
+	width: 210px;
+	height: 210px;
+	margin: 10px;
+	border-radius: 5px;
+}
+
+.dpadButton  {
+	background: red;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+}
+
+.dpadButton:hover  {
+	cursor: pointer;
+}
+
+.dpadrow  {
+	height: 70px;
+}
+
+.dpadcont  {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#two  {
+	display: inline-block;
+}
+
+#twopointfive  {
+	display: inline-block;
+}
+
+.actions  {
+	margin: 5px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.interact  {
+	flex-grow: 1;
+}
+
+#mapback  {
+	background: tan;
+	width: 300px;
+	height: 400px;
+	//border: thin solid black;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+}
+
+.herostats  {
+	background: tan;
+	color: black;
+	height: 275px;
+	font-size: 1.5em;
+	border-right: thin solid black;
+	border-top: thin solid black;
+}
+
+.herostats h1  {
+	text-decoration: underline;
+}
+
+.herostats p  {
+	margin: 0;
+}
+
+.stats  {
+	border: thin solid black;
+}
+
+.statsrowone  {
+	width: 100%;
+}
+
+.statsrowtwo {
+	width: 100%;
+}
+
+.skills  {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.skills p  {
+	color: black;
+	font-size-adjust: .3;
+	margin: 5px 10px;
+	//display: flex;
+}
+
+.maproom  {
+	//background: white;
+	width: 16px;
+	height: 16px;
+	margin: 1px;
+	padding: 1px;
+}
+
+#x0y0  {
+	//background: green;
+}
+
+.previousroom  {
+	background: black;
+}
+
+.ndirections  {
+	background: url("../mathrandomizer/images/ndirections.png");
+}
+
+.sdirections  {
+	background: url("../mathrandomizer/images/sdirections.png");
+}
+
+.edirections  {
+	background: url("../mathrandomizer/images/edirections.png");
+}
+
+.wdirections  {
+	background: url("../mathrandomizer/images/wdirections.png");
+}
+
+.nsdirections  {
+	background: url("../mathrandomizer/images/nsdirections.png");
+}
+
+.nedirections  {
+	background: url("../mathrandomizer/images/nedirections.png");
+}
+
+.nwdirections  {
+	background: url("../mathrandomizer/images/nwdirections.png");
+}
+
+.sedirections  {
+	background: url("../mathrandomizer/images/sedirections.png");
+}
+
+.swdirections  {
+	background: url("../mathrandomizer/images/swdirections.png");
+}
+
+.ewdirections  {
+	background: url("../mathrandomizer/images/ewdirections.png");
+}
+
+.nsedirections  {
+	background: url("../mathrandomizer/images/nsedirections.png");
+}
+
+.nswdirections  {
+	background: url("../mathrandomizer/images/nswdirections.png");
+}
+
+.newdirections  {
+	background: url("../mathrandomizer/images/newdirections.png");
+}
+
+.sewdirections  {
+	background: url("../mathrandomizer/images/sewdirections.png");
+}
+
+.fourdirections  {
+	background: url("../mathrandomizer/images/fourdirections.png");
+}
+
+.currentroom  {
+	background: white;
+}

@@ -1430,36 +1430,103 @@
 	/**************************************************************************************************************************************************************************************/
 	/**************************************************************************************************************************************************************************************/
 
-	//-this needs to be an object
+	//-this is an Object that builds the map based on the size of the screen
 
 	function MapBuilder()  {  //this function will build the map grid of possible rooms
-		this.xy= 500;
-		this.x_axis= -12;
-		this.y_axis= 9;
+		const mw1993 = window.matchMedia("(min-width: 1993px)");
+		const mw1921 = window.matchMedia("(min-width: 1920px) and (max-width: 1992px)");  //this sets y to match a screensize check of at least 1921px wide
+		const mw1849 = window.matchMedia("(min-width: 1849px) and (max-width: 1919px)");
+		const mw1777 = window.matchMedia("(min-width: 1777px) and (max-width: 1848px)");
+		const mw1633 = window.matchMedia("(min-width: 1633px) and (max-width: 1776px)");
+		const mw1561 = window.matchMedia("(min-width: 1561px) and (max-width: 1632px)");
+		const mw1488 = window.matchMedia("(min-width: 1488px) and (max-width: 1560px)");
+		const mw1416 = window.matchMedia("(min-width: 1416px) and (max-width: 1487px)");
+		const mw1344 = window.matchMedia("(min-width: 1344px) and (max-width: 1415px)");
+
+		if (mw1993.matches)  {
+			console.log('---------------1993 is a match!');
+			this.xy= 520;
+			this.x_axis= -13;
+			this.xright= 12;
+			this.xsubtract= 25;
+			this.y_axis= 9;
+		} else if (mw1921.matches)  {
+			console.log('---------------1921 is a match!');
+			this.xy= 500;
+			this.x_axis= -12;
+			this.xright= 12;
+			this.xsubtract= 24;
+			this.y_axis= 9;
+		} else if (mw1849.matches)  {
+			console.log('---------------1849 is a match!');
+			this.xy= 456;
+			this.x_axis= -11;
+			this.xright= 12;
+			this.xsubtract= 23;
+			this.y_axis= 9;
+		} else if (mw1777.matches)  {
+			this.xy= 437;
+			this.x_axis= -11;
+			this.xright= 11;
+			this.xsubtract= 22;
+			this.y_axis= 9;
+		} else if (mw1633.matches)  {
+			this.xy= 420;
+			this.x_axis= -10;
+			this.xright= 10;
+			this.xsubtract= 20;
+			this.y_axis= 9;
+		} else if (mw1561.matches)  {
+			this.xy= 420;
+			this.x_axis= -9;
+			this.xright= 10;
+			this.xsubtract= 19;
+			this.y_axis= 10;
+		} else if (mw1488.matches)  {
+			this.xy= 418;
+			this.x_axis= -9;
+			this.xright= 9;
+			this.xsubtract= 18;
+			this.y_axis= 10;
+		} else if (mw1416.matches)  {
+			this.xy= 396;
+			this.x_axis= -8;
+			this.xright= 9;
+			this.xsubtract= 17;
+			this.y_axis= 11;
+		} else if (mw1344.matches)  {
+			this.xy= 374;
+			this.x_axis= -8;
+			this.xright= 8;
+			this.xsubtract= 16;
+			this.y_axis= 11;
+		}
+		console.log('before the command to build the map! '+this.xright);
 	}
 		
 	MapBuilder.prototype=  {
-		buildTheMap: function()  {  //this function creates a grid of 500 squares giving each square (x,y) coordinates with (0,0) at the center of the map
-			let roomOnMap= "<div id= 'x" + this.x_axis + "y" + this.y_axis + "' class= 'maproom'></div>";
+		buildTheMap: function(xright,xsubtract)  {  //this function creates a grid giving each square (x,y) coordinates with (0,0) at the center of the map
+			const roomOnMap= "<div id= 'x" + this.x_axis + "y" + this.y_axis + "' class= 'maproom'></div>";
 			if (this.xy>0)  {
 				$("#mapback").append(roomOnMap);
 				this.xy--;
-				console.log(this.x_axis);
-				if (this.x_axis<12)  {
+				console.log(this.x_axis,xright);
+				if (this.x_axis<xright)  {
 					this.x_axis++;
-				} else if (this.x_axis===12)  {
-					this.x_axis-=24;
+				} else if (this.x_axis===xright)  {
+					this.x_axis-=xsubtract;
 					this.y_axis--;
 					console.log("y_axis"+this.y_axis)
 				}
-				return this.buildTheMap();
+				console.log('This is the x_axis! '+this.x_axis);
+				return this.buildTheMap(this.xright,this.xsubtract);
 			}
 		}
 	}
 
 	function makeAMap()  {
 		aNewMap[q]= new MapBuilder();
-		aNewMap[q].buildTheMap();
+		aNewMap[q].buildTheMap(aNewMap[q].xright,aNewMap[q].xsubtract);
 		q++;
 
 	}
@@ -1835,7 +1902,7 @@
 					currentRoom.push('keyRoom[' + crcab + ']');  //updates what the current room is
 					console.log("this is the current room " + currentRoom[0]);
 					$("#x"+a+"y"+b).removeClass("currentroom");
-					b++;
+					b++;  //this increments the x axis
 					$("#x"+a+"y"+b).addClass("currentroom");
 					//console.log(keyRoom[crcab].mapPosition);
 					if (keyRoom[crcab].baddies.length===0)  {
@@ -1910,7 +1977,7 @@
 					currentRoom.push('keyRoom[' + crcab + ']');  //updates what the current room is
 					console.log("this is the current room " + currentRoom[0]);
 					$("#x"+a+"y"+b).removeClass("currentroom");
-					b--;
+					b--;  //this decrements the x axis
 					$("#x"+a+"y"+b).addClass("currentroom");
 					//console.log(keyRoom[crcab].mapPosition);
 					if (keyRoom[crcab].baddies.length===0)  {
@@ -1984,7 +2051,7 @@
 					currentRoom.push('keyRoom[' + crcab + ']');  //updates what the current room is
 					console.log("this is the current room " + currentRoom[0]);
 					$("#x"+a+"y"+b).removeClass("currentroom");
-					a++;
+					a++;  //this increments the y axis
 					$("#x"+a+"y"+b).addClass("currentroom");
 					//console.log(keyRoom[crcab].mapPosition);
 					if (keyRoom[crcab].baddies.length===0)  {
@@ -2025,7 +2092,7 @@
 					//console.log("new room saved in old rooms connections array" + keyRoom[number].roomConnectionsArray[3]);
 					$("#x"+a+"y"+b).removeClass("currentroom");
 					$("#x"+a+"y"+b).addClass("previousroom");
-					y++;
+					y++;  //counter for created rooms
 					a--;
 					roomBuilder();
 					$("#x"+a+"y"+b).addClass("currentroom");
@@ -2058,7 +2125,7 @@
 					currentRoom.push('keyRoom[' + crcab + ']');  //updates what the current room is
 					console.log("this is the current room " + currentRoom[0]);
 					$("#x"+a+"y"+b).removeClass("currentroom");
-					a--;
+					a--;  //this decrements the y axis
 					$("#x"+a+"y"+b).addClass("currentroom");
 					//console.log(keyRoom[crcab].mapPosition);
 					if (keyRoom[crcab].baddies.length===0)  {
